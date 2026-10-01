@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paris — Smooth Scroll Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-black text-white selection:bg-white selection:text-black">
+
+  <!-- ========================================================================= -->
+  <!-- BACKGROUND ANIMATION CANVAS (Fixed behind all sections)                  -->
+  <!-- ========================================================================= -->
+  <div id="canvas-container">
+    <canvas id="animation-canvas"></canvas>
+    <!-- Cinematic Vignette & Ambient Depth Overlay -->
+    <div class="canvas-ambient-overlay"></div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN SCROLLABLE CONTENT LAYOUT                                            -->
+  <!-- ========================================================================= -->
+  <div id="content-container">
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: HERO BANNER (Height: 900px, Paris Theme, First Fold Layout)   -->
+    <!-- ========================================================================= -->
+    <section id="home" class="hero-section" aria-label="Paris Banner">
+      <!-- Radial ambient light -->
+      <div class="hero-ambient-light"></div>
+
+      <!-- TOP HEADER / NAVIGATION -->
+      <header class="site-header">
+        <div class="header-inner max-w-7xl">
+          <!-- Logo -->
+          <a href="#home" class="logo-link">
+            <span class="logo-text">PARIS</span>
+          </a>
+
+          <!-- Desktop Floating Navigation Pills -->
+          <nav class="nav-pills" aria-label="Main Navigation">
+            <button type="button" class="nav-pill active" data-target="home">Home</button>
+            <button type="button" class="nav-pill" data-target="experiences">Experiences</button>
+            <button type="button" class="nav-pill" data-target="itineraries">Projects</button>
+            <button type="button" class="nav-pill" data-target="why-choose-us">About</button>
+            <button type="button" class="nav-pill" data-target="cta-section">Contact</button>
+          </nav>
+
+          <!-- Right Action: Open Menu Button -->
+          <div class="header-actions">
+            <button type="button" id="open-menu-btn" class="open-menu-btn">
+              Open menu
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- CENTER HERO AREA -->
+      <main class="hero-main">
+        <h1 class="hero-title">
+          Paris Is Waiting.<br class="desktop-br"> Let’s Make It Unforgettable.
+        </h1>
+
+        <p class="hero-subtitle">
+          From the glow of the Eiffel Tower to charming streets, unforgettable cuisine, and hidden corners of the city, experience Paris beyond the usual itinerary.
+        </p>
+
+        <!-- Call-to-Action Pill Button: Explore Paris -->
+        <div class="hero-cta-wrapper">
+          <button type="button" class="cta-pill-btn open-modal-trigger">
+            <span class="cta-pill-text">Explore Paris</span>
+            <div class="cta-pill-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </main>
+
+      <!-- SIDES OF BANNER - FOUR GLASS METRIC CARDS (2 ON LEFT, 2 ON RIGHT) -->
+      <footer class="hero-footer max-w-7xl">
+        <div class="hero-cards-grid">
+          <!-- Left side: 2 cards -->
+          <div class="cards-column">
+            <!-- Card 1: Experience Paris -->
+            <div class="glass-card metric-card">
+              <div class="metric-icon-box">
+                <i data-lucide="compass" class="icon-blue"></i>
+              </div>
+              <h2 class="metric-title">Experience Paris</h2>
+              <p class="metric-desc">
+                Discover iconic landmarks, hidden gems, and unforgettable moments across the City of Light.
+              </p>
+            </div>
+
+            <!-- Card 2: Your Paris, Your Way -->
+            <div class="glass-card metric-card">
+              <div class="metric-icon-box">
+                <i data-lucide="sparkles" class="icon-blue"></i>
+              </div>
+              <h2 class="metric-title">Your Paris, Your Way</h2>
+              <p class="metric-desc">
+                From romantic evenings to cultural adventures, create a Paris experience made around you.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right side: 2 cards -->
+          <div class="cards-column">
+            <!-- Card 3: Experience Paris -->
+            <div class="glass-card metric-card">
+              <div class="metric-icon-box">
+                <i data-lucide="compass" class="icon-blue"></i>
+              </div>
+              <h2 class="metric-title">Experience Paris</h2>
+              <p class="metric-desc">
+                Discover iconic landmarks, hidden gems, and unforgettable moments across the City of Light.
+              </p>
+            </div>
+
+            <!-- Card 4: Your Paris, Your Way -->
+            <div class="glass-card metric-card">
+              <div class="metric-icon-box">
+                <i data-lucide="sparkles" class="icon-blue"></i>
+              </div>
+              <h2 class="metric-title">Your Paris, Your Way</h2>
+              <p class="metric-desc">
+                From romantic evenings to cultural adventures, create a Paris experience made around you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: WHY CHOOSE US — TRAVEL WITH CONFIDENCE                         -->
+    <!-- ========================================================================= -->
+    <section id="why-choose-us" class="content-section" aria-label="Why Choose Us">
+      <div class="section-container max-w-7xl">
+        <!-- Main Statement Card -->
+        <div class="glass-card statement-card">
+          <div class="section-badge-wrapper">
+            <span class="badge-dot"></span>
+            <span class="section-badge">Why Choose Us — Travel With Confidence</span>
+          </div>
+
+          <h2 class="section-heading">
+            Your Paris Journey, Made Simple.
+          </h2>
+
+          <p class="section-paragraph">
+            Planning a trip shouldn't feel complicated. From choosing the right experiences to organizing your time in the city, we're here to make your Paris adventure easier, smoother, and more enjoyable.
+          </p>
+        </div>
+
+        <!-- 5 Highlights Cards Grid -->
+        <div class="highlights-grid">
+          <!-- Highlight 1 -->
+          <div class="glass-card highlight-card">
+            <div class="highlight-icon-box">
+              <i data-lucide="sparkles" class="icon-blue"></i>
+            </div>
+            <div>
+              <h3 class="highlight-title">Personalized travel experiences</h3>
+              <p class="highlight-desc">
+                Custom-tailored routes, private viewings, and culinary discoveries designed around your unique style.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight 2 -->
+          <div class="glass-card highlight-card">
+            <div class="highlight-icon-box">
+              <i data-lucide="compass" class="icon-blue"></i>
+            </div>
+            <div>
+              <h3 class="highlight-title">Local knowledge</h3>
+              <p class="highlight-desc">
+                Authentic Parisian insight, secret neighborhood bistros, and historic hidden corners beyond the guides.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight 3 -->
+          <div class="glass-card highlight-card">
+            <div class="highlight-icon-box">
+              <i data-lucide="calendar" class="icon-blue"></i>
+            </div>
+            <div>
+              <h3 class="highlight-title">Flexible itineraries</h3>
+              <p class="highlight-desc">
+                Schedules that easily adjust to your daily rhythm, spontaneous stops, and weather on the go.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight 4 -->
+          <div class="glass-card highlight-card">
+            <div class="highlight-icon-box">
+              <i data-lucide="check" class="icon-blue stroke-thick"></i>
+            </div>
+            <div>
+              <h3 class="highlight-title">Easy planning</h3>
+              <p class="highlight-desc">
+                Effortless reservations, curated confirmations, and skip-the-line ticketing handled in one place.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight 5 -->
+          <div class="glass-card highlight-card">
+            <div class="highlight-icon-box">
+              <i data-lucide="headphones" class="icon-blue"></i>
+            </div>
+            <div>
+              <h3 class="highlight-title">Dedicated support</h3>
+              <p class="highlight-desc">
+                Personal concierge availability throughout your entire journey for prompt recommendations and help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: EXPERIENCES — SEE THE PARIS YOU CAME FOR                       -->
+    <!-- ========================================================================= -->
+    <section id="experiences" class="content-section" aria-label="Experiences — See the Paris You Came For">
+      <div class="section-container max-w-7xl">
+        <!-- Section Header Card -->
+        <div class="glass-card statement-card">
+          <div class="section-badge-wrapper">
+            <span class="badge-dot"></span>
+            <span class="section-badge">Experiences — See the Paris You Came For</span>
+          </div>
+
+          <h2 class="section-heading">
+            More Than Places. Real Paris Experiences.
+          </h2>
+
+          <p class="section-paragraph">
+            Explore the city's most iconic landmarks and discover the moments that make Paris special. Whether you're visiting for the first time or returning for something new, we help you experience the city at your own pace.
+          </p>
+        </div>
+
+        <!-- 3 Experience Cards (Horizontal Row) -->
+        <div class="experiences-grid">
+          <!-- Experience 1 -->
+          <div class="glass-card experience-card open-modal-trigger">
+            <div class="experience-content">
+              <h3 class="experience-title">Eiffel Tower &amp; Paris landmarks</h3>
+              <p class="experience-desc">
+                Summit access without the crowds, Arc de Triomphe vistas, and private guided walks.
+              </p>
+            </div>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="glass-card experience-card open-modal-trigger">
+            <div class="experience-content">
+              <h3 class="experience-title">French food &amp; culinary experiences</h3>
+              <p class="experience-desc">
+                Artisanal patisserie tastings, sommelier-curated natural wine cellars, and neighborhood bistros.
+              </p>
+            </div>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="glass-card experience-card open-modal-trigger">
+            <div class="experience-content">
+              <h3 class="experience-title">Art, museums &amp; culture</h3>
+              <p class="experience-desc">
+                Curated pathways through the Louvre and Musée d'Orsay, secret artist ateliers, and galleries.
+              </p>
+            </div>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: YOUR PARIS, YOUR WAY                                           -->
+    <!-- ========================================================================= -->
+    <section id="itineraries" class="content-section" aria-label="Your Paris, Your Way">
+      <div class="section-container max-w-7xl">
+        <!-- Main Statement Card -->
+        <div class="glass-card statement-card">
+          <div class="section-badge-wrapper">
+            <span class="badge-dot"></span>
+            <span class="section-badge">Your Paris, Your Way</span>
+          </div>
+
+          <h2 class="section-heading">
+            One City. Endless Ways to Experience It.
+          </h2>
+
+          <p class="section-paragraph">
+            Whether you have 24 hours or a full week, we'll help you make the most of your time. Build your days around the places, experiences, food, and moments that matter most to you.
+          </p>
+        </div>
+
+        <!-- 3 Compact Itinerary Cards (Fixed 80px Height) -->
+        <div class="itinerary-grid">
+          <!-- Card 1: The Icons -->
+          <div class="glass-card itinerary-card open-modal-trigger">
+            <h3 class="itinerary-title">The Icons</h3>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+
+          <!-- Card 2: Culture & History -->
+          <div class="glass-card itinerary-card open-modal-trigger">
+            <h3 class="itinerary-title">Culture &amp; History</h3>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+
+          <!-- Card 3: The Parisian Evening -->
+          <div class="glass-card itinerary-card open-modal-trigger">
+            <h3 class="itinerary-title">The Parisian Evening</h3>
+            <div class="card-arrow-circle">
+              <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Banner Card -->
+        <div class="glass-card cta-banner-card">
+          <div class="cta-banner-text">
+            <span class="cta-banner-tag">Tailored Itineraries</span>
+            <h3 class="cta-banner-heading">Ready to craft your days in Paris?</h3>
+            <p class="cta-banner-sub">
+              Choose your pace, select your favorite stops, and receive your custom daily guide.
+            </p>
+          </div>
+
+          <button type="button" class="btn-white open-modal-trigger">
+            <span>Build My Itinerary</span>
+            <i data-lucide="arrow-up-right" class="btn-arrow"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: CALL TO ACTION — DON'T JUST VISIT PARIS. EXPERIENCE IT.        -->
+    <!-- ========================================================================= -->
+    <section id="cta-section" class="cta-section" aria-label="Call to Action">
+      <div class="cta-inner max-w-3xl">
+        <h2 class="cta-main-title">
+          Don't Just Visit Paris. Experience It.
+        </h2>
+
+        <button type="button" class="btn-hero-action open-modal-trigger">
+          <span>Start Planning Your Paris Trip</span>
+          <span class="action-arrow">&rarr;</span>
+        </button>
+
+        <p class="cta-supporting-text">
+          The city of lights is full of stories waiting to become yours. Tell us what you want from your Paris trip, and let's turn your plans into an experience you'll remember long after you leave.
+        </p>
+
+        <p class="cta-tagline">
+          Paris is not just a destination. It's a feeling.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner max-w-7xl">
+        <span class="footer-logo">PARIS</span>
+        <span class="footer-copy">&copy; 2026 Paris Curated Escapes. All rights reserved.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE-OVER / MOBILE MENU DRAWER                                           -->
+  <!-- ========================================================================= -->
+  <div id="menu-drawer-backdrop" class="drawer-backdrop hidden">
+    <div id="menu-drawer" class="drawer-panel">
+      <div class="drawer-top">
+        <div class="drawer-header">
+          <span class="logo-text">PARIS</span>
+          <button type="button" id="close-menu-btn" class="close-icon-btn" aria-label="Close menu">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <nav class="drawer-nav">
+          <button type="button" class="drawer-nav-item" data-target="home">
+            <span>Home</span>
+            <i data-lucide="chevron-right" class="drawer-chevron"></i>
+          </button>
+          <button type="button" class="drawer-nav-item" data-target="experiences">
+            <span>Experiences</span>
+            <i data-lucide="chevron-right" class="drawer-chevron"></i>
+          </button>
+          <button type="button" class="drawer-nav-item" data-target="itineraries">
+            <span>Projects</span>
+            <i data-lucide="chevron-right" class="drawer-chevron"></i>
+          </button>
+          <button type="button" class="drawer-nav-item" data-target="why-choose-us">
+            <span>About</span>
+            <i data-lucide="chevron-right" class="drawer-chevron"></i>
+          </button>
+          <button type="button" class="drawer-nav-item" data-target="cta-section">
+            <span>Contact</span>
+            <i data-lucide="chevron-right" class="drawer-chevron"></i>
+          </button>
+        </nav>
+
+        <div class="drawer-info-card">
+          <div class="drawer-info-tag">Curated Paris Escapes</div>
+          <p class="drawer-info-text">
+            Tailored itineraries, private museum viewings, gastronomic tours, and rooftop vistas designed for discerning travelers.
+          </p>
+        </div>
+      </div>
+
+      <div class="drawer-bottom">
+        <button type="button" class="btn-white w-full open-modal-trigger">
+          Explore Paris
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- EXPLORE PARIS MODAL                                                       -->
+  <!-- ========================================================================= -->
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal-panel">
+      <button type="button" id="close-modal-btn" class="modal-close-btn" aria-label="Close dialog">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="modal-icon-box">
+        <i data-lucide="compass" class="icon-blue"></i>
+      </div>
+
+      <h3 class="modal-title">Explore Paris</h3>
+      <p class="modal-desc">
+        Plan your bespoke Paris experience. From curated Seine river cruises to private gallery tours and hidden neighborhood walks.
+      </p>
+
+      <!-- Form View -->
+      <form id="explore-form" class="modal-form">
+        <div class="form-group">
+          <label class="form-label" for="user-name">Your Name</label>
+          <input type="text" id="user-name" required placeholder="e.g. Eleanor Vance" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="user-email">Email Address</label>
+          <input type="email" id="user-email" required placeholder="name@example.com" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="experience-style">Experience Style</label>
+          <select id="experience-style" class="form-select">
+            <option value="classic">Iconic Landmarks &amp; Louvre</option>
+            <option value="romantic">Romantic Evenings &amp; Seine Cruise</option>
+            <option value="culinary">Gastronomy, Wine &amp; Pastries</option>
+            <option value="hidden">Hidden Passages &amp; Art Boutiques</option>
+          </select>
+        </div>
+
+        <button type="submit" class="modal-submit-btn">
+          <span>Receive My Custom Guide</span>
+          <i data-lucide="arrow-up-right" class="btn-arrow"></i>
+        </button>
+      </form>
+
+      <!-- Success View (Hidden by default) -->
+      <div id="modal-success" class="modal-success hidden">
+        <div class="success-icon-box">
+          <i data-lucide="check" class="success-icon"></i>
+        </div>
+        <h4 class="success-title">Request Received</h4>
+        <p class="success-desc">
+          Merci! Your personalized Paris itinerary concierge will be in touch shortly.
+        </p>
+        <button type="button" id="success-close-btn" class="btn-white">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
