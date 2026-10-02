@@ -12,7 +12,7 @@
   // Format frame URL: frames/ezgif-frame-001.jpg to frames/ezgif-frame-187.jpg
   function getFramePath(index) {
     const frameNumber = String(index + 1).padStart(3, '0');
-    return `frames/ezgif-frame-${frameNumber}.jpg`;
+    return `ezgif-frame-${frameNumber}.jpg`;
   }
 
   // Preload storage
